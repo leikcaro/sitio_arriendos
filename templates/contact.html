@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12 col-md-8 m-auto p-5">
+        <h1 class="text-center">Contact</h1>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form action="{% url 'contact' %}" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="a8j8yKmBhRUeud2TWMf4v3ISNczsfPsbtzwFg28XlhDF3B8w9hxhyELCEOpwRnKt">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="id_customer_email" name="customer_email" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+                <label for="id_customer_name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="id_customer_name" name="customer_name" placeholder="Ingresa tu nombre">
+            </div>
+            <div class="mb-3">
+                <label for="id_message" class="form-label">Mensaje</label>
+                <textarea class="form-control" id="id_message" name="message" rows="3"></textarea>
+            </div> 
+            <input type="Submit" class="btn btn-success" value="Enviar">
+        </form>
+    </div>
+</div>
+{% endblock %}
+

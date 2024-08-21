@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Listado de Propiedades</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Metros Construidos</th>
+                <th scope="col">Metros Terreno</th>
+                <th scope="col">Estacionamientos</th>
+                <th scope="col">Habitaciones</th>
+                <th scope="col">Baños</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Comuna</th>
+                <th scope="col">Tipo de Inmueble</th>
+                <th scope="col">Arrendada</th>
+                <th scope="col">Foto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for propiedad in propiedades %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ propiedad.nombre }}</td>
+                <td>{{ propiedad.descripcion }}</td>
+                <td>{{ propiedad.m2_construidos }}</td>
+                <td>{{ propiedad.m2_terreno }}</td>
+                <td>{{ propiedad.cantidad_estacionamientos }}</td>
+                <td>{{ propiedad.cantidad_habitaciones }}</td>
+                <td>{{ propiedad.cantidad_banos }}</td>
+                <td>{{ propiedad.direccion }}</td>
+                <td>{{ propiedad.comuna.nombre }}</td>
+                <td>{{ propiedad.tipo_inmueble.nombre }}</td>
+                <td>{{ propiedad.arrendada|yesno:"Sí,No" }}</td>
+                <td><img src="{{ propiedad.foto_portada.url }}" class="img-thumbnail" alt="Foto de {{ propiedad.nombre }}" width="100"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Hi, {{ user.get_username }}. you are already logged in.</h1>
+{% else %}
+    <div class="container text-center">
+        <div class="row align-items-start">
+        <div class="col">
+        </div>
+        <div class="col">
+            <h1>¡Sesión finalizada!</h1>
+    <h3>Gracias por visitarnos.</h3>
+    <a class="btn btn-primary" href="{% url 'login'%}" role="button">Iniciar sesión nuevamente.</a>
+    <a href=""></a>
+        </div>
+        <div class="col">
+        </div>
+        </div>
+    </div>
+    
+    <br>   
+    <br>
+{% endif %}
+{% endblock %}
